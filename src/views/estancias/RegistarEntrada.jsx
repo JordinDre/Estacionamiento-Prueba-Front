@@ -55,29 +55,28 @@ export default function RegistrarEntrada() {
 
 
     const handleSubmit = async (values, { resetForm }) => {
-         setCargando(true);
-         setErrores([]);
- 
-         try {
-             const response = await axioss.post(`estancias`, values);
-             Swal.fire({
-                 title: 'Entrada Registrada',
-                 html: response.data.message,
-                 icon: 'success',
-                 confirmButtonText: 'Aceptar'
-             }).then(() => {
-                 resetForm();
-             });
-         } catch (error) {
-             setErrores(error.response.data.errors);
-         } finally {
-             setCargando(false);
-         }
+        setCargando(true);
+        setErrores([]);
+
+        try {
+            const response = await axioss.post(`estancias`, values);
+            Swal.fire({
+                title: 'Entrada Registrada',
+                html: response.data.message,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                resetForm();
+            });
+        } catch (error) {
+            setErrores(error.response.data.errors);
+        } finally {
+            setCargando(false);
+        }
     };
 
     const validate = Yup.object().shape({
-        /*         placa: Yup.string().required("La placa es obligatoria"),
-                tipo_vehiculo: Yup.string().required("El tipo de vehículo es obligatorio"), */
+        placa: Yup.string().required('El campo es obligatorio'),
     });
 
     const initial = {

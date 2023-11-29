@@ -26,8 +26,7 @@ export default function Formulario(props) {
   }, []);
 
   const validate = Yup.object().shape({
-    /* placa: Yup.string().required('El campo es obligatorio'),
-    tipo_vehiculo: Yup.string().required('El campo es obligatorio'), */
+    placa: Yup.string().required('El campo es obligatorio'),
   });
 
   const initial = {

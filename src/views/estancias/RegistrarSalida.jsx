@@ -46,10 +46,11 @@ export default function RegistrarSalida() {
     };
 
     const validate = Yup.object().shape({
+        placa: Yup.string().required('El campo es obligatorio'),
     });
 
     const initial = {
-        placa: [],
+        placa: '',
     };
     return (
         <>
