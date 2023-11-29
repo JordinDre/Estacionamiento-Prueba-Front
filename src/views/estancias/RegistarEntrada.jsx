@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../../utils/axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
@@ -8,6 +7,7 @@ import Toast from '../../components/Toast';
 import CustomSelect from '../../components/CustomSelect';
 import Title from '../../components/Title';
 import Swal from 'sweetalert2';
+import axioss from '../../utils/axios';
 
 export default function RegistrarEntrada() {
     const [cargando, setCargando] = useState(false);
@@ -19,7 +19,7 @@ export default function RegistrarEntrada() {
 
     useEffect(() => {
         Promise.all([
-            axios.get('catalogo/tipos_vehiculos'),
+            axioss.get('catalogo/tipos_vehiculos'),
         ])
             .then(function (responses) {
                 setTiposVehiculos(responses[0].data);
@@ -34,7 +34,7 @@ export default function RegistrarEntrada() {
             return;
         }
         try {
-            const response = await axios.get(`/vehiculos/buscar/${texto}`);
+            const response = await axioss.get(`/vehiculos/buscar/${texto}`);
             setSugerenciasPlaca(response.data);
         } catch (error) {
             console.error("Error al buscar placas:", error);
@@ -43,7 +43,7 @@ export default function RegistrarEntrada() {
 
     const seleccionarPlaca = async (placa, setFieldValue) => {
         try {
-            const response = await axios.get(`/vehiculos/${placa}`);
+            const response = await axioss.get(`/vehiculos/${placa}`);
             setVehiculoSeleccionado(response.data);
             setFieldValue("placa", placa);
             setMostrarSugerencias(false);
@@ -59,7 +59,7 @@ export default function RegistrarEntrada() {
          setErrores([]);
  
          try {
-             const response = await axios.post(`estancias`, values);
+             const response = await axioss.post(`estancias`, values);
              Swal.fire({
                  title: 'Entrada Registrada',
                  html: response.data.message,

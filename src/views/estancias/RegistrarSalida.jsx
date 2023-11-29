@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../../utils/axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
@@ -8,6 +7,7 @@ import Toast from '../../components/Toast';
 import CustomSelect from '../../components/CustomSelect';
 import Title from '../../components/Title';
 import Swal from 'sweetalert2';
+import axioss from '../../utils/axios';
 
 export default function RegistrarSalida() {
     const [cargando, setCargando] = useState(false);
@@ -16,7 +16,7 @@ export default function RegistrarSalida() {
 
     useEffect(() => {
         Promise.all([
-            axios.get('catalogo/vehiculos_adentro'),
+            axioss.get('catalogo/vehiculos_adentro'),
         ])
             .then(function (responses) {
                 setVehiculos(responses[0].data);
@@ -29,7 +29,7 @@ export default function RegistrarSalida() {
         setErrores([]);
 
         try {
-            const response = await axios.put(`estancias/${values.vehiculo.id}`);
+            const response = await axioss.put(`estancias/${values.vehiculo.id}`);
             Swal.fire({
                 title: 'Salida Registrada',
                 html: response.data.message,

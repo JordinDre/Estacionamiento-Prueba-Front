@@ -14,6 +14,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import GarageIcon from '@mui/icons-material/Garage';
 import InputIcon from '@mui/icons-material/Input';
 import LogoutIcon from '@mui/icons-material/Logout';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+
 export default function Icon(props) {
 
     const { icon, size } = props;
@@ -38,6 +40,7 @@ export default function Icon(props) {
         tipo_vehiculo: <GarageIcon style={iconStyles} />,
         entrada: <InputIcon style={iconStyles} />,
         salida: <LogoutIcon style={iconStyles} />,
+        vehiculo: <DirectionsCarIcon style={iconStyles} />,
     };
 
     return icons[icon] || <HomeIcon style={iconStyles} />
