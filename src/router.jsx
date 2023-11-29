@@ -8,6 +8,7 @@ import Inaccesible from "./views/Inaccesible";
 import TipoVehiculo from "./views/tipo_vehiculo/Index";
 import RegistrarEntrada from "./views/estancias/RegistarEntrada";
 import RegistrarSalida from "./views/estancias/RegistrarSalida";
+import Estancias from "./views/estancias/Index";
 import Vehiculos from "./views/vehiculos/Index";
 
 const routesConfig = [
@@ -34,6 +35,11 @@ const routesConfig = [
     {
         path: "vehiculos",
         component: Vehiculos,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "estancias",
+        component: Estancias,
         allowedRoles: ['administrador']
     },
 ];
