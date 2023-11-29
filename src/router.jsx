@@ -6,6 +6,8 @@ import Inicio from "./views/Inicio";
 import Inaccesible from "./views/Inaccesible";
 
 import TipoVehiculo from "./views/tipo_vehiculo/Index";
+import RegistrarEntrada from "./views/estancias/RegistarEntrada";
+import RegistrarSalida from "./views/estancias/RegistrarSalida";
 
 const routesConfig = [
     {
@@ -16,6 +18,16 @@ const routesConfig = [
     {
         path: "tipo_vehiculos",
         component: TipoVehiculo,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "registrar/entrada",
+        component: RegistrarEntrada,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "registrar/salida",
+        component: RegistrarSalida,
         allowedRoles: ['administrador']
     },
 ];

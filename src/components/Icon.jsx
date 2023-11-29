@@ -12,7 +12,8 @@ import PercentIcon from '@mui/icons-material/Percent';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SettingsIcon from '@mui/icons-material/Settings';
 import GarageIcon from '@mui/icons-material/Garage';
-
+import InputIcon from '@mui/icons-material/Input';
+import LogoutIcon from '@mui/icons-material/Logout';
 export default function Icon(props) {
 
     const { icon, size } = props;
@@ -35,6 +36,8 @@ export default function Icon(props) {
         redirect: <LaunchIcon style={iconStyles} />,
         configuracion: <SettingsIcon style={iconStyles} />,
         tipo_vehiculo: <GarageIcon style={iconStyles} />,
+        entrada: <InputIcon style={iconStyles} />,
+        salida: <LogoutIcon style={iconStyles} />,
     };
 
     return icons[icon] || <HomeIcon style={iconStyles} />
