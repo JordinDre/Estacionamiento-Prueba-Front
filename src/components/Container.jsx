@@ -49,9 +49,9 @@ export default function Container({ children }) {
                                         <span className='font-normal text-sm'>{EMAIL}</span>
                                     </h1>
                                     <h1 className='font-bold text-center text-indigo-700 my-2 uppercase border p-1 border-indigo-600'>{ROLE}</h1>
-                                    <Modal title={`Cambiar Contraseña`} button={'Cambiar Contraseña'} size='xs' color='dark'>
+                                    {/* <Modal title={`Cambiar Contraseña`} button={'Cambiar Contraseña'} size='xs' color='dark'>
                                         <CambiarContraseña />
-                                    </Modal>
+                                    </Modal> */}
                                     <Button onClick={logout} label='Cerrar Sesión' color='danger' className='mt-3' />
                                 </ul>
                             </div>

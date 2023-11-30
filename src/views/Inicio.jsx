@@ -13,7 +13,7 @@ export default function Inicio() {
       <CardLink label='Vehiculos' link='/vehiculos' icon='vehiculo' color='primary' />
       <CardLink label='Estancias' link='/estancias' icon='parqueo' color='primary' />
       <CardLink label='Registrar Salida' link='/registrar/salida' icon='salida' color='primary' />
-      <CardLink label='Informe' link='/informe' icon='informe' color='primary' />
+      <CardLink label='Pagos Residentes' link='/pagos_residentes' icon='informe' color='primary' />
     </div>
   );
 }
