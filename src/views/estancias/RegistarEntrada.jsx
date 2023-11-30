@@ -85,9 +85,13 @@ export default function RegistrarEntrada() {
     };
     return (
         <>
-            {errores.length > 0 && errores.map((e, index) => (
-                <Toast key={index} error>{e}</Toast>
-            ))}
+            {errores && (
+                <>
+                    {Object.keys(errores).map((e) => (
+                        <Toast key={e} error>{errores[e][0]}</Toast>
+                    ))}
+                </>
+            )}
             <Title>Registrar Entrada</Title>
             <Formik
                 initialValues={initial}
