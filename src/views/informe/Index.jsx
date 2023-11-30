@@ -9,12 +9,14 @@ import CustomSelect from '../../components/CustomSelect';
 import Spinner from '../../components/Spinner';
 import Tabla from '../../components/Tabla';
 import { formatearDinero, restarHoras } from '../../helpers';
+import Toast from '../../components/Toast';
 
 export default function Index() {
 
     const [cargando, setCargando] = useState(false)
     const [tiposVehiculos, setTiposVehiculos] = useState([])
     const [informe, setInforme] = useState([])
+    const [errores, setErrores] = useState([])
 
     useEffect(() => {
         Promise.all([
@@ -48,6 +50,13 @@ export default function Index() {
 
     return (
         <div className='pb-10 mb-10'>
+            {errores && (
+                <>
+                    {Object.keys(errores).map((e) => (
+                        <Toast key={e} error>{errores[e][0]}</Toast>
+                    ))}
+                </>
+            )}
             <div className='flex justify-between items-end'>
                 <Title>Pagos Residentes</Title>
             </div>
@@ -56,18 +65,41 @@ export default function Index() {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                <Form className='md:flex md:gap-4 align-bottom items-end my-2 mb-5'>
-                    <Input type='date' name="fecha_inicial" label="Fecha Inicial*" id='fecha' />
-                    <Input type='date' name="fecha_final" label="Fecha Final*" id='fecha' />
-                    <CustomSelect
-                        label="Tipo Vehículo*"
-                        name="tipo_vehiculo"
-                        options={tiposVehiculos}
-                        customOptions={['tipo_vehiculo']}
-                    />
-                    {cargando ? <Spinner spin /> : <CustomButton type='submit' color='primary' label='Aceptar' className='w-full mt-5 md:mb-1' />}
-                    {cargando ? <Spinner spin /> : <CustomButton type='button' color='danger' label='PDF' className='w-full mt-5 md:mb-1' />}
-                </Form>
+                {({ values }) => (
+                    <Form className='md:flex md:gap-4 align-bottom items-end my-2 mb-5'>
+                        <Input type='date' name="fecha_inicial" label="Fecha Inicial*" id='fecha' />
+                        <Input type='date' name="fecha_final" label="Fecha Final*" id='fecha' />
+                        <CustomSelect
+                            label="Tipo Vehículo*"
+                            name="tipo_vehiculo"
+                            options={tiposVehiculos}
+                            customOptions={['tipo_vehiculo']}
+                        />
+                        {cargando ? <Spinner spin /> : <CustomButton type='submit' color='primary' label='Aceptar' className='w-full mt-5 md:mb-1' />}
+                        {(values.fecha_inicial && values.fecha_final) &&
+                            <CustomButton color="danger" label='PDF' className='w-full mt-5 md:mb-1'
+                                onClick={() => {
+                                    setErrores([])
+                                    axioss.get(`reporte/pagos_residentes_pdf`, {
+                                        params: {
+                                            fecha_inicial: values?.fecha_inicial,
+                                            fecha_final: values?.fecha_final,
+                                            tipo_vehiculo: values?.tipo_vehiculo.id,
+                                        },
+                                        responseType: 'blob',
+                                    })
+                                        .then(res => {
+                                            const facturaBlob = new Blob([res.data], {
+                                                type: "application/pdf",
+                                            });
+                                            const blobURL = URL.createObjectURL(facturaBlob);
+                                            window.open(blobURL, "_blank");
+                                        })
+                                }}
+                            />
+                        }
+                    </Form>
+                )}
             </Formik>
             < Tabla
                 isLoading={cargando}
