@@ -18,9 +18,9 @@ const routes = [
         ],
     },
     {
-        title: 'Informe',
+        title: 'Reportes',
         links: [
-            { to: '/informe', text: 'Informe', roles: ['administrador'] },
+            { to: '/pagos_residentes', text: 'Pagos Residentes', roles: ['administrador'] },
         ],
     },
 ];

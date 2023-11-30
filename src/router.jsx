@@ -10,7 +10,7 @@ import RegistrarEntrada from "./views/estancias/RegistarEntrada";
 import RegistrarSalida from "./views/estancias/RegistrarSalida";
 import Estancias from "./views/estancias/Index";
 import Vehiculos from "./views/vehiculos/Index";
-import Informe from "./views/informe/Index";
+import PagosResidentes from "./views/pagos_residentes/Index";
 
 const routesConfig = [
     {
@@ -44,8 +44,8 @@ const routesConfig = [
         allowedRoles: ['administrador']
     },
     {
-        path: "informe",
-        component: Informe,
+        path: "pagos_residentes",
+        component: PagosResidentes,
         allowedRoles: ['administrador']
     },
 ];
