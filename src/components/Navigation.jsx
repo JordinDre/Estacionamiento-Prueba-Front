@@ -3,30 +3,24 @@ import { Link, useLocation } from 'react-router-dom';
 
 const routes = [
     {
-        title: 'Control Médico',
+        title: 'Vehiculos',
         links: [
-            { to: '/control_medico', text: 'Control Médico', roles: ['administrador'] },
-            { to: '/medicamentos', text: 'Medicamentos', roles: ['administrador'] },
-            { to: '/planes_educacionales', text: 'Planes Educacionales', roles: ['administrador'] },
+            { to: '/vehiculos', text: 'Vehiculos', roles: ['administrador'] },
+            { to: '/tipo_vehiculos', text: 'Tipos de Vehículos', roles: ['administrador'] },
         ],
     },
     {
-        title: 'Tratamientos',
+        title: 'Estancias',
         links: [
-            { to: '/tratamientos', text: 'Tratamientos', roles: ['administrador'] },
-            { to: '/tipos_tratamientos', text: 'Tipos de Tratamientos', roles: ['administrador'] },
+            { to: '/estancias', text: 'Estancias', roles: ['administrador'] },
+            { to: '/registrar/entrada', text: 'Registrar Entrada', roles: ['administrador'] },
+            { to: '/registrar/salida', text: 'Registrar Salida', roles: ['administrador'] },
         ],
     },
     {
-        title: 'Usuarios',
+        title: 'Informe',
         links: [
-            { to: '/pacientes', text: 'Pacientes', roles: ['administrador'] },
-        ],
-    },
-    {
-        title: 'Agendar Cita',
-        links: [
-            { to: '/citas', text: 'Citas', roles: ['administrador'] },
+            { to: '/informe', text: 'Informe', roles: ['administrador'] },
         ],
     },
 ];

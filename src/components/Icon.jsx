@@ -12,6 +12,11 @@ import PercentIcon from '@mui/icons-material/Percent';
 import LaunchIcon from '@mui/icons-material/Launch';
 import SettingsIcon from '@mui/icons-material/Settings';
 import GarageIcon from '@mui/icons-material/Garage';
+import InputIcon from '@mui/icons-material/Input';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
 
 export default function Icon(props) {
 
@@ -35,6 +40,11 @@ export default function Icon(props) {
         redirect: <LaunchIcon style={iconStyles} />,
         configuracion: <SettingsIcon style={iconStyles} />,
         tipo_vehiculo: <GarageIcon style={iconStyles} />,
+        entrada: <InputIcon style={iconStyles} />,
+        salida: <LogoutIcon style={iconStyles} />,
+        vehiculo: <DirectionsCarIcon style={iconStyles} />,
+        informe: <AppRegistrationIcon style={iconStyles} />,
+        parqueo: <LocalParkingIcon style={iconStyles} />,
     };
 
     return icons[icon] || <HomeIcon style={iconStyles} />

@@ -6,6 +6,11 @@ import Inicio from "./views/Inicio";
 import Inaccesible from "./views/Inaccesible";
 
 import TipoVehiculo from "./views/tipo_vehiculo/Index";
+import RegistrarEntrada from "./views/estancias/RegistarEntrada";
+import RegistrarSalida from "./views/estancias/RegistrarSalida";
+import Estancias from "./views/estancias/Index";
+import Vehiculos from "./views/vehiculos/Index";
+import Informe from "./views/informe/Index";
 
 const routesConfig = [
     {
@@ -16,6 +21,31 @@ const routesConfig = [
     {
         path: "tipo_vehiculos",
         component: TipoVehiculo,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "registrar/entrada",
+        component: RegistrarEntrada,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "registrar/salida",
+        component: RegistrarSalida,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "vehiculos",
+        component: Vehiculos,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "estancias",
+        component: Estancias,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "informe",
+        component: Informe,
         allowedRoles: ['administrador']
     },
 ];
