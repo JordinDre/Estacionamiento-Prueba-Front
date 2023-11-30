@@ -17,6 +17,12 @@ const routes = [
             { to: '/registrar/salida', text: 'Registrar Salida', roles: ['administrador'] },
         ],
     },
+    {
+        title: 'Informe',
+        links: [
+            { to: '/informe', text: 'Informe', roles: ['administrador'] },
+        ],
+    },
 ];
 
 

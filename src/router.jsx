@@ -10,6 +10,7 @@ import RegistrarEntrada from "./views/estancias/RegistarEntrada";
 import RegistrarSalida from "./views/estancias/RegistrarSalida";
 import Estancias from "./views/estancias/Index";
 import Vehiculos from "./views/vehiculos/Index";
+import Informe from "./views/informe/Index";
 
 const routesConfig = [
     {
@@ -40,6 +41,11 @@ const routesConfig = [
     {
         path: "estancias",
         component: Estancias,
+        allowedRoles: ['administrador']
+    },
+    {
+        path: "informe",
+        component: Informe,
         allowedRoles: ['administrador']
     },
 ];

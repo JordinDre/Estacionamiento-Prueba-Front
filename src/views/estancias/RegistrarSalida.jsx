@@ -22,14 +22,13 @@ export default function RegistrarSalida() {
                 setVehiculos(responses[0].data);
                 setCargando(false);
             });
-    }, []);
+    }, [cargando]);
 
     const handleSubmit = async (values, { resetForm }) => {
         setCargando(true);
         setErrores([]);
-
         try {
-            const response = await axioss.put(`estancias/${values.vehiculo.id}`);
+            const response = await axioss.put(`estancias/${values.placa.id}`);
             Swal.fire({
                 title: 'Salida Registrada',
                 html: response.data.message,
@@ -45,22 +44,22 @@ export default function RegistrarSalida() {
         }
     };
 
-    const validate = Yup.object().shape({
-        placa: Yup.string().required('El campo es obligatorio'),
-    });
-
     const initial = {
-        placa: '',
+        placa: [],
     };
+
     return (
         <>
-            {errores.length > 0 && errores.map((e, index) => (
-                <Toast key={index} error>{e}</Toast>
-            ))}
+            {errores && (
+                <>
+                    {Object.keys(errores).map((e) => (
+                        <Toast key={e} error>{errores[e][0]}</Toast>
+                    ))}
+                </>
+            )}
             <Title>Registrar Salida</Title>
             <Formik
                 initialValues={initial}
-                validationSchema={validate}
                 onSubmit={handleSubmit}
                 enableReinitialize
             >
@@ -68,7 +67,7 @@ export default function RegistrarSalida() {
                     <Form>
                         <CustomSelect
                             label="Placa*"
-                            name="vehiculo"
+                            name="placa"
                             options={vehiculos}
                             customOptions={['vehiculo.placa']}
                         />
